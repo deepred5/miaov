@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		input {
+			background: #fff;
+			border: 2px solid #efefef;
+			width: 70px;
+			height: 25px;
+			border-radius: 8px;
+			text-align: center;
+			cursor: pointer;
+		}
+		img {
+			cursor: pointer;
+		}
+		p {
+			font-size: 14px;
+			font-weight: bold;
+		}
+		span {
+			font-size: 12px;
+		}
+		#container {
+			background: url(../img/bg2.jpg) no-repeat;
+			position: relative;
+			width: 872px;
+			height: 551px;
+			margin: 50px auto;
+		}
+		#box1 p, #box1 span, #box1 img, #box2 p, #box2 span, #box2 img, #prev, #next {
+			position: absolute;
+		}
+		#box1 img {
+			width: 449px;
+			height: 246px;
+			left: 50px;
+			top: 113px;
+		}
+		#box2 img {
+			width: 249px;
+			height: 246px;
+			right: 65px;
+			top: 113px;
+		}
+		#box1 span {
+			left: 50px;
+			bottom: 145px;
+		}
+		#box2 span {
+			right: 297px;
+			bottom: 145px;
+		}
+		#box1 p {
+			left: 237px;
+			bottom: 170px;
+		}
+		#box2 p {
+			right: 153px;
+			bottom: 170px;
+		}
+		#prev {
+			left: 30px;
+			top: 50px;
+		}
+		#next {
+			left: 110px;
+			top: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<input type="button" value="上一组" id="prev">
+		<input type="button" value="下一组" id="next">
+		<div id="box1">
+			<img>
+			<p>正在加载</p>
+			<span>正在加载</span>
+		</div>
+		<div id="box2">
+			<img>
+			<p>正在加载</p>
+			<span>正在加载</span>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var oContainer = document.getElementById('container');
+		var oPrev = document.getElementById('prev');
+		var oNext = document.getElementById('next');
+
+		var oImg1 = document.getElementById('box1').getElementsByTagName('img')[0];
+		var oImg2 = document.getElementById('box2').getElementsByTagName('img')[0];
+
+		var arrUrl1 = ['../img/1.jpg', '../img/2.jpg', '../img/3.jpg'];
+		var arrUrl2 = ['../img/4.jpg', '../img/5.jpg'];
+
+		var curPic1 = 0, curPic2 = 0;
+
+		/*function changePic1() {
+			oImg1.src = arrUrl1[curPic1];
+			oP1.innerHTML = '第一组第' + (curPic1 + 1) + '张';
+			oSpan1.innerHTML = (curPic1 + 1) + '/' + arrUrl1.length;
+		}
+
+		function changePic2() {
+			oImg2.src = arrUrl2[curPic2];
+			oP2.innerHTML = '第二组第' + (curPic2 + 1) + '张';
+			oSpan2.innerHTML = (curPic2 + 1) + '/' + arrUrl2.length;
+			
+		}*/
+
+		function changePic(id, curPic, arrUrl, index) {
+			var oBox = document.getElementById(id);
+			var oImg = oBox.getElementsByTagName('img')[0];
+			var oP = oBox.getElementsByTagName('p')[0];
+			var oSpan = oBox.getElementsByTagName('span')[0]; 
+			oImg.src = arrUrl[curPic];
+			index = index || '?';
+			oP.innerHTML = '第' + index + '组第' + (curPic + 1) + '张';
+			oSpan.innerHTML = (curPic + 1) + '/' + arrUrl.length;
+		}
+
+		function changeBoth() {
+			changePic('box1', curPic1, arrUrl1, '一');
+			changePic('box2', curPic2, arrUrl2, '二');
+		}
+
+		//初始化
+		changeBoth();
+
+
+		oImg1.onclick = function() {
+			curPic1++;
+			if (curPic1 == arrUrl1.length) {
+				curPic1 = 0;
+			}
+			changePic('box1', curPic1, arrUrl1, '一');
+
+		}		
+
+		oImg2.onclick = function() {
+			curPic2++;
+			if (curPic2 == arrUrl2.length) {
+				curPic2 = 0;
+			}
+			changePic('box2', curPic2, arrUrl2, '二');
+
+		}		
+
+		oPrev.onclick = function() {
+			curPic1--;
+			curPic2--;
+			if (curPic1 < 0) {
+				curPic1 = arrUrl1.length - 1;
+			}
+			if (curPic2 < 0) {
+				curPic2 = arrUrl2.length - 1;
+			}
+			changeBoth();
+		}	
+
+		oNext.onclick = function() {
+			curPic1++;
+			curPic2++;
+			if (curPic1 == arrUrl1.length) {
+				curPic1 = 0;
+			}
+			if (curPic2 == arrUrl2.length) {
+				curPic2 = 0;
+			}
+			changeBoth();
+		}
+	</script>
+</body>
+</html>

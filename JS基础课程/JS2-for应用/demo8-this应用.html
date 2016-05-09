@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="buttn1">
+	<input type="button" value="buttn2">
+	<input type="button" value="buttn3">
+	<script type="text/javascript">
+
+		var aBtn = document.getElementsByTagName('input');
+		var that = null;
+
+
+		for (var i=0; i<aBtn.length; i++) {
+			/*aBtn[i].onclick = function() {
+				//this.style.background = '#fed'; //this => aBtn[i]
+				that = this;
+				fn1();
+			}*/
+			aBtn[i].onclick = fn2;
+		}
+
+
+		function fn1() {
+			that.style.background = '#fed';
+		}
+
+		function fn2() {
+			this.style.background = '#fed';
+		}
+	</script>
+</body>
+</html>

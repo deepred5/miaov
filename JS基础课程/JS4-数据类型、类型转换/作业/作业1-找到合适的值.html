@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+	li {
+		list-style: none;
+		width: 100px;
+		background: #fed;
+		margin-bottom: 5px;
+		font-size: 16px;
+		font-weight: bold;
+		text-align: center;
+	}
+	ul {
+		padding: 0;
+	}
+</style>
+</head>
+<body>
+<p>
+var arr = [ '100px', 'abc'-6, [], -98765, 34, -2, 0, '300', , function(){alert(1);}, null, document, [], true, '200px'-30,'23.45元', 5, Number('abc'), function(){ alert(3); }, 'xyz'-90 ];
+</p>
+<input type="button" value="找到arr里所有的数字">
+<input type="button" value="找到可以转成数字的">
+<input type="button" value="把转成数字以后，最大值判断出来">
+<input type="button" value="把 NaN 所在的位置找出来">
+<ul></ul>
+<script>
+
+	var arr = [ '100px', 'abc'-6, [], -98765, 34, -2, 0, '300', , function(){alert(1);}, null, document, [], true, '200px'-30,'23.45元', 5, Number('abc'), function(){ alert(3); }, 'xyz'-90 ];
+	var oUl = document.getElementsByTagName('ul')[0];
+	var arrAnswer = [];
+	var aInput = document.getElementsByTagName('input');
+
+	aInput[0].onclick = findNumber;
+	aInput[1].onclick = findCanBeNumber;
+	aInput[2].onclick = findMaxNumber;
+	aInput[3].onclick = findNaN;
+
+/*
+	1、找到arr里所有的数字：-98765, 34, -2, 0, 5
+	2、找到可以转成数字的：'100px', -98765, 34, -2, 0, '300', '23.45元',  5 
+	3、把转成数字以后，最大值判断出来：300
+	4、把 NaN 所在的位置找出来：1 14 17  19
+*/
+
+
+function showAnswer() {
+	oUl.innerHTML = '';
+	for (var i=0; i<arrAnswer.length; i++) {
+		oUl.innerHTML += '<li>' + arrAnswer[i] + '</li>';
+	}
+}
+
+	//找到arr里所有的数字(注意NaN是number类型但不是数字)
+	function findNumber() {
+		arrAnswer.length = 0;//清空数组
+		for (var i=0; i<arr.length; i++) {
+			if (typeof arr[i] == 'number' && !isNaN(arr[i])) {
+				arrAnswer.push(arr[i]);
+			}
+		}
+		showAnswer();
+	}
+
+	//找到可以转成数字的（注意数字0在if条件判断时会认为是false）
+	function findCanBeNumber() {
+		arrAnswer.length = 0;
+		for (var i=0; i<arr.length; i++) {
+			if (!isNaN(parseFloat(arr[i]))) {
+				arrAnswer.push(arr[i]);
+			}
+		}
+		showAnswer();
+	}
+
+	//把转成数字以后，最大值判断出来
+	function findMaxNumber() {
+		arrAnswer.length = 0;
+		for (var i=0; i<arr.length; i++) {
+			if (!isNaN(parseFloat(arr[i]))) {
+				arrAnswer.push(parseFloat(arr[i]));
+			}
+			arrAnswer.sort(function(a, b) {return a-b;});
+			oUl.innerHTML = '<li>' + arrAnswer[arrAnswer.length -1] + '</li>';
+		}
+	}
+
+	//把 NaN 所在的位置找出来
+	function findNaN() {
+		arrAnswer.length = 0;
+		for (var i=0; i<arr.length; i++) {
+			if (isNaN(arr[i]) && typeof arr[i] == 'number') {
+				arrAnswer.push(i);
+			}
+		}
+		showAnswer();
+	}
+
+</script>
+</body>
+</html>

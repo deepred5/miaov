@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function fn(a) {
+			if (typeof a === 'number' && a === a) {
+				alert(a + 20);
+			} else if (typeof a === 'string') {
+				alert(a.charAt(1));
+			} else if (typeof a === 'function') {
+				a();
+			}
+		}
+		fn(100);
+		fn('deepred');
+		fn(function(){alert('hello world!')});
+	</script>
+</body>
+</html>

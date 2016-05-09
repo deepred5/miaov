@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript">
+	/*var arr = [
+		[1, 2, 3],
+		[4, 5, 6],
+		[7, 8, 9, 10]
+	];
+
+	for (var i=0; i<arr.length; i++) {
+		for (var j=0; j<arr[i].length; j++) {
+			alert(arr[i][j]);
+		}
+	}*/
+	window.onload = function() {
+		var oUl = document.getElementById('list');
+		var aUl = oUl.getElementsByTagName('ul');
+		var aLi = null;
+
+		for (var i=0; i<aUl.length; i++) {
+			var aLi = aUl[i].getElementsByTagName('li');
+			for (var j=0; j<aLi.length; j++) {
+				aLi[j].style.border = '1px solid red';
+			}
+		}
+	};
+</script>
+<body>
+	<ul id="list">
+		<li>
+			<h2>我的好友</h2>
+			<ul>
+				<li>好友1</li>
+				<li>好友2</li>
+				<li>好友3</li>
+			</ul>
+		</li>
+		<li>
+			<h2>我的同学</h2>
+			<ul>
+				<li>同学1</li>
+				<li>同学2</li>
+			</ul>
+		</li>
+		<li>
+			<h2>黑名单</h2>
+			<ul>
+				<li>黑名单1</li>
+				<li>黑名单2</li>
+			</ul>
+		</li>
+	</ul>
+</body>
+</html>

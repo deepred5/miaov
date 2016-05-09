@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			background: #666;
+		}
+		img {
+			width: 500px;
+			height: 400px;
+		}
+		li {
+			list-style: none;
+		}
+		#pic {
+			margin: 10px auto;
+			width: 500px;
+			height: 400px;
+			position: relative;
+			background: #eee;
+		}
+		#pic ul {
+			position: absolute;
+			width: 40px;
+			top: 0;
+			right: -50px;
+		}
+		#pic li {
+			width: 40px;
+			height: 40px;
+			background: #eee;
+			margin-bottom: 10px;
+			cursor: pointer;
+		}
+		#pic li.active {
+			background: #fcc;
+		}
+		#pic p, #pic span {
+			position: absolute;
+			height: 40px;
+			text-align: center;
+			line-height: 40px;
+			left: 0;
+			color: #111;
+			width: 500px;
+		}
+		#pic p {
+			bottom: 0;
+		}
+		#pic span {
+			top: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="pic">
+		<p>文字正在加载中。。。</p>
+		<span>数量正在加载中。。。</span>
+		<img>
+		<ul>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var arrUrl = ['../img/1.jpg', '../img/2.jpg', '../img/3.jpg', '../img/4.jpg'];
+		var arrText = ['文字1', '文字2', '文字3', '文字4'];
+
+		var oDiv = document.getElementById('pic');
+		var oSpan = oDiv.getElementsByTagName('span')[0];
+		var oImg = oDiv.getElementsByTagName('img')[0];
+		var oP = oDiv.getElementsByTagName('p')[0];
+		var oUl = oDiv.getElementsByTagName('ul')[0];
+		var aLi = oUl.getElementsByTagName('li');
+		var num = 0;
+		var oldLi = null;
+
+		for (var i=0; i<arrUrl.length; i++) {
+			oUl.innerHTML += '<li></li>';
+		}
+
+		//初始化
+		aLi[num].className = 'active';
+		oImg.src = arrUrl[num];
+		oP.innerHTML = arrText[num];
+		oSpan.innerHTML = num + 1 + ' / ' + arrText.length;
+		oldLi = aLi[num];
+
+		for (var i=0; i<aLi.length; i++) {
+			aLi[i].index = i;
+			aLi[i].onclick = function() {
+				oImg.src = arrUrl[this.index];
+				oP.innerHTML = arrText[this.index];
+				oSpan.innerHTML = this.index + 1 + ' / ' + arrText.length;
+
+				//全部清空，然后给当前添加class
+				/*for (var i=0; i<aLi.length; i++) {
+					aLi[i].className = '';
+				}
+				this.className = 'active';*/
+
+				//清空上一个class,给当前添加class
+				oldLi.className = '';
+				oldLi = this;
+				this.className = 'active';
+			}
+		}
+
+	</script>
+</body>
+</html>

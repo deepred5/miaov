@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<img src="../img/1.jpg" id="img1" style="width: 600px;">
+	<script type="text/javascript">
+		var oImg = document.getElementById('img1');
+		var onOff = true;
+
+		/*oImg.onclick = function() {
+			if (onOff) {
+				oImg.src = '../img/2.jpg';
+				onOff = false;
+			} else {
+				oImg.src = '../img/1.jpg';
+				onOff = true;
+			}
+		}*/
+
+		oImg.onclick = function() {
+			if (onOff) {
+				oImg.src = '../img/2.jpg';
+			} else {
+				oImg.src = '../img/1.jpg';
+			}
+			onOff = ! onOff;
+		}
+	</script>
+</body>
+</html>

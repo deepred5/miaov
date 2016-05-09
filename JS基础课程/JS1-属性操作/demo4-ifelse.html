@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	window.onload = function() {
+		var oP = document.getElementById('p1');
+		var oBtn1 = document.getElementById('btn1');
+		var oBtn2 = document.getElementById('btn2');
+		var num = 16;
+
+		oBtn1.onclick = function() {
+			if (num < 20) {
+				num++;
+				oP.style.fontSize = num + 'px';
+			} else {
+				alert('字体最大20px!');
+			}
+			
+		};
+		oBtn2.onclick = function() {
+			if (num > 14) {
+				num--;
+				oP.style.fontSize = num + 'px';
+			} else {
+				alert('字体最小14px!');
+			}
+		};
+	};
+	</script>
+</head>
+<body>
+	<input type="button" value="+" id="btn1">
+	<input type="button" value="-" id="btn2">
+	<p id="p1">
+		从近5年国考招录情况来看，2016国考招录人数达到顶峰，接近3万。从近5年国考报名结束之日最后的过审人数来看，四年来在持续走低。从竞争比看，今年的竞争比略低，46:1也创下了五年来的新低。从单日增长来看，昨天较23日增加了27万余人，但低于去年最后一天增长33万人的规模。
+	</p>
+</body>
+</html>

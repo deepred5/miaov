@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="btn1">
+	<input type="button" value="btn2">
+	<input type="button" value="btn3">
+	<script type="text/javascript">
+	 var aBtn = document.getElementsByTagName('input');
+
+	 /*
+			错误做法，每次点击弹出3
+	 for (var i=0; i<aBtn.length; i++) {
+	 	aBtn[i].onclick = function() {
+	 		alert(i);
+	 	};
+	 }*/
+
+	 for (var i=0; i<aBtn.length; i++) {
+	 	aBtn[i].index = i;
+	 	aBtn[i].onclick = function() {
+	 		alert(this.index);
+	 	};
+	 }
+	</script>
+</body>
+</html>

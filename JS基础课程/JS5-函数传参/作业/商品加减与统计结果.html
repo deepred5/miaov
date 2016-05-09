@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		li {
+			list-style: none;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<ul id="list">
+		<li>
+			<input type="button" value="-">
+			<strong>0</strong>
+			<input type="button" value="+">
+			单价：<em>10.5元</em>
+			小计：<span>0</span>元
+		</li>
+		<li>
+			<input type="button" value="-">
+			<strong>0</strong>
+			<input type="button" value="+">
+			单价：<em>8元</em>
+			小计：<span>0</span>元
+		</li>
+		<li>
+			<input type="button" value="-">
+			<strong>0</strong>
+			<input type="button" value="+">
+			单价：<em>17.5元</em>
+			小计：<span>0</span>元
+		</li>
+		<li>
+			<input type="button" value="-">
+			<strong>0</strong>
+			<input type="button" value="+">
+			单价：<em>30元</em>
+			小计：<span>0</span>元
+		</li>
+	</ul>
+	<p>商品共计: <span>0</span>件， 共花费了: <span>0</span>元<br>最贵商品单价：<span>0</span>元</p>
+	<script type="text/javascript">
+		var oUl = document.getElementById('list');
+		var aLi = oUl.getElementsByTagName('li');
+		var amount = 0;
+		var totalPrice = 0;
+		var arrPrice = [];
+		var aSpan = document.getElementsByTagName('p')[0].getElementsByTagName('span');
+
+
+		for (var i=0; i<aLi.length; i++) {
+			sum(aLi[i]);
+		}
+
+
+
+		function sum(oLi) {
+			var aBtn = oLi.getElementsByTagName('input');
+			var oStrong = oLi.getElementsByTagName('strong')[0];
+			var oEm = oLi.getElementsByTagName('em')[0];
+			var oSpan = oLi.getElementsByTagName('span')[0];
+			var num = parseInt(oStrong.innerHTML);
+			var price = parseFloat(oEm.innerHTML);
+
+			function update() {
+				oStrong.innerHTML = num;
+				oSpan.innerHTML = num * price;
+				aSpan[0].innerHTML = amount;
+				aSpan[1].innerHTML = totalPrice;
+				aSpan[2].innerHTML = arrPrice.sort(function(a, b) {return b-a})[0] || 0;
+			}
+
+			aBtn[1].onclick = function() {
+				num++;
+				amount++;
+				if (arrPrice.indexOf(price) == -1) {
+					arrPrice.push(price);
+				}
+				totalPrice += price;
+				update();
+			}
+
+			aBtn[0].onclick = function() {
+				num--;
+				var newArrPrice = [];
+				if (num < 0) {
+					num = 0;
+				} else {
+					amount--;
+					totalPrice -= price;
+				}
+				if (num == 0 && arrPrice.indexOf(price) != -1) {
+					for (var i=0; i<arrPrice.length; i++) {
+						if (arrPrice[i] != price) {
+							newArrPrice.push(arrPrice[i]);
+						}
+					}
+					arrPrice = newArrPrice;
+				}
+				update();
+		 }
+	}
+	</script>
+
+</body>
+</html>

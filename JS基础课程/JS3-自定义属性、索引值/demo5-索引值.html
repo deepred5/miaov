@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="btn1">
+	<input type="button" value="btn2">
+	<input type="button" value="btn3">
+	<p>1</p>
+	<p>2</p>
+	<p>3</p>
+	<script type="text/javascript">
+		 var aBtn = document.getElementsByTagName('input');
+		 var arr = ['红', '黄', '蓝'];
+		 var aP = document.getElementsByTagName('p');
+
+		 for (var i=0; i<aBtn.length; i++) {
+		 	aBtn[i].index = i;
+		 	aBtn[i].onclick = function() {
+		 		this.value = arr[this.index];
+		 		aP[this.index].innerHTML = arr[this.index];
+		 	}
+		 }
+	</script>
+</body>
+</html>

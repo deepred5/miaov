@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#box {
+			border: 1px solid #000;
+			width: 100px;
+			height: 100px;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="button">
+	<div id="box"></div>
+	<script type="text/javascript">
+	 var oDiv = document.getElementById('box');
+	 var oBtn = document.getElementsByTagName('input')[0];
+	 oDiv.onclick = function() {
+	 	// oDiv.style.width = '200px';
+	 	oDiv.style.cssText = 'width: 200px; height: 200px; background: #edf';
+	 }
+	 oBtn.onclick = function() {
+	 	//oDiv.style.background = 'yellow'; //只是给oDiv添加一条行间样式
+	 	 oDiv.style.cssText = 'background: yellow';//把oDiv的全部行间样式覆盖
+	 }
+	</script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		input {
+			outline: none;
+		}
+		li {
+			list-style: none;
+		
+		}
+		#bg {
+			width: 282px;
+			height: 588px;
+			background: url(img/phone.gif) no-repeat;
+			margin: 15px auto;
+			position: relative;
+		}
+		#message {
+			width: 218px;
+			height: 360px;
+			position: absolute;
+			left: 23px;
+			top: 85px;
+			padding: 10px 10px 0;
+			overflow: auto;
+		}
+		#message li {
+			margin-bottom: 6px;
+		}
+		#message p span {
+			line-height: 20px;
+			font-size: 14px;
+			border-radius: 5px;
+			padding: 8px 10px;
+			word-break: break-all;
+		}
+		
+		#message  p {
+			overflow: hidden;
+			*margin-top: -24px;
+		}
+		#message .left img {
+			float: left;
+		}
+		#message .left p span {
+			background: #21c618;
+			float: left;
+			margin-left: 5px;
+		}
+		#message .right img {
+			float: right;
+		}
+		#message .right p span {
+			background: #ded6e7;
+			float: right;
+			margin-right: 5px;
+
+		}
+		#sendbox {
+			height: 48px;
+			width: 237px;
+			border-top: 1px solid #bdcec6;
+			border-bottom: 1px solid #bdcec6;
+			position: absolute;
+			left: 24px;
+			bottom: 83px;
+			background: #f7f7f7;
+		}
+		#logo {
+			position: absolute;
+			left: 4px;
+			top: 8px;
+			border: 1px solid #ded6e7;
+			border-radius: 5px;
+			padding: 3px;
+		}
+		#text {
+			width: 136px;
+			height: 34px;
+			border: 1px solid #ded6e7;
+			border-radius: 5px;
+			position: absolute;
+			left: 40px;
+			top: 7px;
+			line-height: 34px;
+			padding-left: 5px;
+		}
+		#btn {
+			border: none;
+			background: #f7f7f7;
+			font-size: 20px;
+			position: absolute;
+			top: 14px;
+			right: 6px;
+			width: 45px;
+			height: 23px;
+			font-weight: bold;
+			color: #a0a0a4;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="bg">
+			<ul id="message">
+				<!-- <li class="left">
+					<img src="img/logo1.gif">
+					<p><span>大家好大家好大家好大家好大家好</span></p>
+				</li>
+				<li class="right">
+					<img src="img/logo2.gif">
+					<p><span>大家好</span></p>
+				</li> -->
+				
+			</ul>
+			<div id="sendbox">
+				<img src="img/logo1.gif" id="logo">
+				<input type="text" id="text">
+				<input type="button" id="btn" value="发送">
+			</div>
+	</div>
+	<script type="text/javascript">
+		var oUl = document.getElementById('message');
+		var oImg = document.getElementById('logo');
+		var oText = document.getElementById('text');
+		var oBtn = document.getElementById('btn');
+		var onOff = true;
+
+		//切换头像功能
+		oImg.onclick = function() {
+			if (onOff) {
+				oImg.src = 'img/logo2.gif';
+				onOff = false;
+			} else {
+				oImg.src = 'img/logo1.gif';
+				onOff = true;
+			}
+			oText.value = '';
+		}
+		//发消息功能
+		oBtn.onclick = function() {
+			if (oText.value == '') {
+				alert('请输入文字！');
+			} else {
+				if (onOff) {
+					oUl.innerHTML = '<li class="left"><img src="img/logo1.gif"><p><span>' + oText.value + '</span></p></li>' 
+									+ oUl.innerHTML;
+				} else {
+					oUl.innerHTML = '<li class="right"><img src="img/logo2.gif"><p><span>' + oText.value + '</span></p></li>' 
+									+ oUl.innerHTML;
+				}
+				oText.value = '';
+			}
+			
+		}
+
+	</script>
+</body>
+</html>

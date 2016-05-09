@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="自动生成5条新闻" id="btn">
+	<ul id="list"></ul>
+	<script type="text/javascript">
+		var arr = [
+			'新闻1',
+			'新闻2',
+			'新闻3',
+			'新闻4',
+			'新闻5',
+		];
+		var oBtn = document.getElementById('btn');
+		var oList = document.getElementById('list');
+		var onOff = true;
+
+		oBtn.onclick = function() {
+			//oList.innerHTML = '';//先清空，在添加
+
+			if (onOff) {
+				for (var i=0; i<arr.length; i++) {
+				oList.innerHTML += '<li>' + arr[i] + '</li>';//bug：每次点击就会增加5条新闻
+			}
+			}
+			onOff = false;
+		}
+	</script>
+</body>
+</html>

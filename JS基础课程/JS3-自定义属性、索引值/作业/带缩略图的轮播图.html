@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		html {
+			height: 100%;
+		}
+		body {
+			background: url(../img/bg.jpg) no-repeat;
+			background-size: cover;
+			
+		}
+		img {
+			width: 600px;
+			height: 330px;
+			vertical-align: middle;
+		}
+		h1 {
+			color: #e9e8e6;
+			text-align: center;
+			height: 40px;
+		}
+		a {
+			text-decoration: none;
+		}
+		li {
+			list-style: none;
+		}
+		#pic {
+			width: 600px;
+			margin: 50px auto;
+			position: relative;
+		}
+		#pic a {
+			position: absolute;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			top: 180px;
+			background: #dd8293;
+			opacity: 0.8;
+			font-weight: bold;
+			color: #fff;
+			text-align: center;
+			line-height: 50px;
+			font-size: 36px;
+			transition-duration: .5s;
+		}
+		#pic a:hover {
+			opacity: 1;
+			background: #dd3554;
+		}
+		#prev {
+			left: 30px;
+		}
+		#next {
+			right: 30px;
+		}
+		#pic ul {
+			text-align: center;
+			margin-top: 20px;
+		
+		}
+		#pic li {
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background: #4c474e;
+			margin-right: 10px;
+			cursor: pointer;
+			position: relative;
+			transition-duration: .5s;
+		}
+		#pic li img {
+			position: absolute;
+			width: 160px;
+			height: 90px;
+			left: -80px;
+			bottom: 30px;
+			border: 7px solid #eee;
+			display: none;
+		}
+		#pic li.active {
+			background: #dd3554;
+		}
+	</style>
+</head>
+<body>
+	<div id="pic">
+		<h1>带缩略图的轮播图</h1>
+		<img>
+		<a href="javascript:;" id="prev"><</a>
+		<a href="javascript:;" id="next">></a>
+		<ul>
+			<!-- <li><img src="../img/1.jpg"></li>
+			<li><img src="../img/2.jpg"></li>
+			<li><img src="../img/3.jpg"></li>
+			<li><img src="../img/4.jpg"></li>
+			<li><img src="../img/5.jpg"></li> -->
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var oDiv = document.getElementById('pic');
+		var oImg = oDiv.getElementsByTagName('img')[0];
+		var oPrev = document.getElementById('prev');
+		var oNext = document.getElementById('next');
+		var oUl = oDiv.getElementsByTagName('ul')[0];
+		var aLi = oUl.getElementsByTagName('li');
+		var arrUrl = ['../img/1.jpg', '../img/2.jpg', '../img/3.jpg', '../img/4.jpg', '../img/5.jpg'];
+		var curPic = 0;
+
+		//生成5个li
+		for (var i=0; i<arrUrl.length; i++) {
+			oUl.innerHTML += '<li><img src="' + arrUrl[i] + '"></li>';
+		}
+
+		//切换函数
+		function changePic(curPic) {
+			oImg.src = arrUrl[curPic];
+			for (var i=0; i<aLi.length; i++) {
+					aLi[i].className = '';
+			}
+			aLi[curPic].className = 'active';
+		}
+
+		//初始化
+		changePic(curPic);
+
+		for (var i=0; i<aLi.length; i++) {
+			aLi[i].index = i;
+
+			aLi[i].onmouseover = function() {
+				this.getElementsByTagName('img')[0].style.display = 'block';
+			}
+
+			aLi[i].onmouseout = function() {
+				this.getElementsByTagName('img')[0].style.display = 'none';
+			}
+
+			aLi[i].onclick = function() {
+				changePic(this.index);
+				curPic = this.index;//li点击后要更新curPic
+			}
+		}
+
+		oPrev.onclick = function() {
+			curPic--;
+			if (curPic < 0) {
+				curPic = arrUrl.length - 1;
+			}
+			changePic(curPic);
+		}
+
+		oNext.onclick = function() {
+			curPic++;
+			if (curPic == arrUrl.length) {
+				curPic = 0;
+			}
+			changePic(curPic);
+		}
+
+	</script>
+</body>
+</html>

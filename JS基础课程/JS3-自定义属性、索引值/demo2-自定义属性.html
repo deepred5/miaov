@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="0">
+	<input type="button" value="0">
+	<input type="button" value="0">
+	<script type="text/javascript">
+		var arr = ['A', 'B', 'C', 'D'];
+		var aBtn = document.getElementsByTagName('input');
+
+		for (var i=0; i<aBtn.length; i++) {
+			aBtn[i].num = 0;
+			aBtn[i].onclick = function() {
+				this.value = arr[this.num];
+				this.num = (++this.num) % arr.length;
+
+				/*
+					另外一种方法循环this.num,不过代码量更多
+					this.num++;
+					if (this.num == arr.length) {
+					    this.num = 0;
+					  }
+				*/
+			};
+		}
+	</script>
+</body>
+</html>

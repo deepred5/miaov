@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		input {
+			background: #fff;
+			border: 2px solid #efefef;
+			width: 70px;
+			height: 25px;
+			border-radius: 8px;
+			text-align: center;
+			cursor: pointer;
+		}
+		img {
+			cursor: pointer;
+		}
+		p {
+			font-size: 14px;
+			font-weight: bold;
+		}
+		span {
+			font-size: 12px;
+		}
+		#container {
+			background: url(../img/bg2.jpg) no-repeat;
+			position: relative;
+			width: 872px;
+			height: 551px;
+			margin: 50px auto;
+		}
+		#box1 p, #box1 span, #box1 img, #box2 p, #box2 span, #box2 img, #prev, #next {
+			position: absolute;
+		}
+		#box1 img {
+			width: 449px;
+			height: 246px;
+			left: 50px;
+			top: 113px;
+		}
+		#box2 img {
+			width: 249px;
+			height: 246px;
+			right: 65px;
+			top: 113px;
+		}
+		#box1 span {
+			left: 50px;
+			bottom: 145px;
+		}
+		#box2 span {
+			right: 297px;
+			bottom: 145px;
+		}
+		#box1 p {
+			left: 237px;
+			bottom: 170px;
+		}
+		#box2 p {
+			right: 153px;
+			bottom: 170px;
+		}
+		#prev {
+			left: 30px;
+			top: 50px;
+		}
+		#next {
+			left: 110px;
+			top: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<input type="button" value="上一组" id="prev">
+		<input type="button" value="下一组" id="next">
+		<div id="box1">
+			<img>
+			<p>正在加载</p>
+			<span>正在加载</span>
+		</div>
+		<div id="box2">
+			<img>
+			<p>正在加载</p>
+			<span>正在加载</span>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var oContainer = document.getElementById('container');
+		var oPrev = document.getElementById('prev');
+		var oNext = document.getElementById('next');
+
+		var oImg1 = document.getElementById('box1').getElementsByTagName('img')[0];
+		var oImg2 = document.getElementById('box2').getElementsByTagName('img')[0];
+
+		var arrUrl1 = ['../img/1.jpg', '../img/2.jpg', '../img/3.jpg'];
+		var arrUrl2 = ['../img/4.jpg', '../img/5.jpg'];
+
+		function CreateBox(id, arrUrl, index) {
+			this.curPic = 0;
+			this.oBox =  document.getElementById(id);
+			this.oImg = this.oBox.getElementsByTagName('img')[0];
+			this.oP = this.oBox.getElementsByTagName('p')[0];
+			this.oSpan = this.oBox.getElementsByTagName('span')[0];
+			this.arrUrl = arrUrl;
+			this.index = index || '?';
+		}
+
+		CreateBox.prototype.showPic = function() {
+			this.oImg.src = this.arrUrl[this.curPic];
+			this.oP.innerHTML = '第' + this.index + '组第' + (this.curPic + 1) + '张';
+			this.oSpan.innerHTML = (this.curPic + 1) + '/' + this.arrUrl.length;
+		}
+
+		CreateBox.prototype.next = function() {
+			this.curPic++;
+			if (this.curPic == this.arrUrl.length) {
+				this.curPic = 0;
+			}
+			this.showPic();
+		}
+
+		CreateBox.prototype.prev = function() {
+			this.curPic--;
+			if (this.curPic < 0) {
+				this.curPic = this.arrUrl.length - 1;
+			}
+			this.showPic();
+		}
+
+
+		
+
+	
+		var box1 = new CreateBox('box1', arrUrl1, '一');
+		var box2 = new CreateBox('box2', arrUrl2, '二');
+
+		//初始化
+		box1.showPic();
+		box2.showPic();
+
+		oImg1.onclick = function() {
+			box1.next();
+		}
+
+		oImg2.onclick = function() {
+			box2.next();
+		}
+
+		oPrev.onclick = function() {
+			box1.prev();
+			box2.prev();
+		}	
+
+		oNext.onclick = function() {
+			box1.next();
+			box2.next();
+		}
+	</script>
+</body>
+</html>

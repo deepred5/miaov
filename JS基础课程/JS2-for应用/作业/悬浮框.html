@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body, ul, p, h2, h3, input {
+			margin: 0;
+			padding: 0;
+		}
+		.clearfix {
+			zoom: 1;
+		}
+		.clearfix:after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+		li {
+			list-style: none;
+		}
+		img {
+			border: none;
+		}
+		a {
+			text-decoration: none;
+			display: block;
+		}
+		input {
+			border: none;
+		}
+		#box {
+			width: 514px;
+			margin: 150px auto;
+			font-size: 12px;
+		}
+		h2 {
+			font-size: 12px;
+			border-bottom: 1px solid #9c9c9c;
+			padding-bottom: 7px;
+
+		}
+		#list {
+			padding-top: 13px;
+			margin-right: -30px;
+			padding-left: 20px;
+		}
+		li {
+			width: 56px;
+			height: 90px;
+			float: left;
+			margin-right: 30px;
+			position: relative;
+		}
+		li a p {
+			color: #313139;
+			text-indent: 6px;
+		}
+		p.special {
+			color: #9c9c9c;
+		}
+		.mask {
+			width: 232px;
+			height: 126px;
+			background: #f7efef;
+			border: 1px solid #c0c0c0;
+			border-bottom-width: 2px;
+			padding-bottom: 10px;
+			position: absolute;
+			left: 20px;
+			top: -130px;
+			display: none;
+			z-index: 1;
+		}
+		.mask .header {
+			height: 52px;
+			background: #dee7ef;
+			padding-left: 10px;
+			position: relative;
+		}
+		.mask .header h3 {
+			padding-top: 7px; 
+		}
+		.mask .header p {
+			color: #808080;
+			margin-top: 10px;
+		}
+		.mask .header input {
+			width: 60px;
+			height: 22px;
+			background: url(img/btn.gif) no-repeat;
+			font-size: 0;
+			position: absolute;
+			right: 7px;
+			bottom: 15px;
+			
+		}
+		.mask .content {
+			background: #fff;
+			height: 74px;
+			padding-left: 10px;
+		}
+		.mask .content p {
+			width: 200px;
+			padding-top: 10px;
+			line-height: 20px;
+		}
+		.mask .content .star {
+			padding-left: 83px;
+			background: url(img/star.gif) no-repeat;
+			display: inline-block;
+			height: 14px;
+			line-height: 14px;
+			color: #ff0000;
+			margin-top: 9px;
+		}
+		.mask .content .num {
+			color: red;
+		}
+		.mask .content .add {
+			padding: 0;
+			display: inline;
+			margin-left: 25px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<h2>最新新闻</h2>
+		<ul id="list" class="clearfix">
+			<li>
+				<a href="#">
+				<img src="img/1.gif">
+					<p>娱乐观</p>
+					<p class="special">新闻类</p>
+				</a>
+				<div class="mask">
+					<div class="header">
+						<h3>搜狐汽车图库</h3>
+						<p>生活</p>
+						<input type="button" value="添加">
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站，为您提供专业的汽车</p>
+						<span class="star">4.0</span>
+						<p class="add"><span class="num">76876</span>人已添加</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<a href="#">
+				<img src="img/1.gif">
+					<p>娱乐观</p>
+					<p class="special">新闻类</p>
+				</a>
+				<div class="mask">
+					<div class="header">
+						<h3>搜狐汽车图库</h3>
+						<p>生活</p>
+						<input type="button" value="添加">
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站，为您提供专业的汽车</p>
+						<span class="star">4.0</span>
+						<p class="add"><span class="num">76876</span>人已添加</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<a href="#">
+				<img src="img/1.gif">
+					<p>娱乐观</p>
+					<p class="special">新闻类</p>
+				</a>
+				<div class="mask">
+					<div class="header">
+						<h3>搜狐汽车图库</h3>
+						<p>生活</p>
+						<input type="button" value="添加">
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站，为您提供专业的汽车</p>
+						<span class="star">4.0</span>
+						<p class="add"><span class="num">76876</span>人已添加</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<a href="#">
+				<img src="img/1.gif">
+					<p>娱乐观</p>
+					<p class="special">新闻类</p>
+				</a>
+				<div class="mask">
+					<div class="header">
+						<h3>搜狐汽车图库</h3>
+						<p>生活</p>
+						<input type="button" value="添加">
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站，为您提供专业的汽车</p>
+						<span class="star">4.0</span>
+						<p class="add"><span class="num">76876</span>人已添加</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<a href="#">
+				<img src="img/1.gif">
+					<p>娱乐观</p>
+					<p class="special">新闻类</p>
+				</a>
+				<div class="mask">
+					<div class="header">
+						<h3>搜狐汽车图库</h3>
+						<p>生活</p>
+						<input type="button" value="添加">
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站，为您提供专业的汽车</p>
+						<span class="star">4.0</span>
+						<p class="add"><span class="num">76876</span>人已添加</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<a href="#">
+				<img src="img/1.gif">
+					<p>娱乐观</p>
+					<p class="special">新闻类</p>
+				</a>
+				<div class="mask">
+					<div class="header">
+						<h3>搜狐汽车图库</h3>
+						<p>生活</p>
+						<input type="button" value="添加">
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站，为您提供专业的汽车</p>
+						<span class="star">4.0</span>
+						<p class="add"><span class="num">76876</span>人已添加</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<a href="#">
+				<img src="img/1.gif">
+					<p>娱乐观</p>
+					<p class="special">新闻类</p>
+				</a>
+				<div class="mask">
+					<div class="header">
+						<h3>搜狐汽车图库</h3>
+						<p>生活</p>
+						<input type="button" value="添加">
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站，为您提供专业的汽车</p>
+						<span class="star">4.0</span>
+						<p class="add"><span class="num">76876</span>人已添加</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<a href="#">
+				<img src="img/1.gif">
+					<p>娱乐观</p>
+					<p class="special">新闻类</p>
+				</a>
+				<div class="mask">
+					<div class="header">
+						<h3>搜狐汽车图库</h3>
+						<p>生活</p>
+						<input type="button" value="添加">
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站，为您提供专业的汽车</p>
+						<span class="star">4.0</span>
+						<p class="add"><span class="num">76876</span>人已添加</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<a href="#">
+				<img src="img/1.gif">
+					<p>娱乐观</p>
+					<p class="special">新闻类</p>
+				</a>
+				<div class="mask">
+					<div class="header">
+						<h3>搜狐汽车图库</h3>
+						<p>生活</p>
+						<input type="button" value="添加">
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站，为您提供专业的汽车</p>
+						<span class="star">4.0</span>
+						<p class="add"><span class="num">76876</span>人已添加</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<a href="#">
+				<img src="img/1.gif">
+					<p>娱乐观</p>
+					<p class="special">新闻类</p>
+				</a>
+				<div class="mask">
+					<div class="header">
+						<h3>搜狐汽车图库</h3>
+						<p>生活</p>
+						<input type="button" value="添加">
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站，为您提供专业的汽车</p>
+						<span class="star">4.0</span>
+						<p class="add"><span class="num">76876</span>人已添加</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<a href="#">
+				<img src="img/1.gif">
+					<p>娱乐观</p>
+					<p class="special">新闻类</p>
+				</a>
+				<div class="mask">
+					<div class="header">
+						<h3>搜狐汽车图库</h3>
+						<p>生活</p>
+						<input type="button" value="添加">
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站，为您提供专业的汽车</p>
+						<span class="star">4.0</span>
+						<p class="add"><span class="num">76876</span>人已添加</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<a href="#">
+				<img src="img/1.gif">
+					<p>娱乐观</p>
+					<p class="special">新闻类</p>
+				</a>
+				<div class="mask">
+					<div class="header">
+						<h3>搜狐汽车图库</h3>
+						<p>生活</p>
+						<input type="button" value="添加">
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站，为您提供专业的汽车</p>
+						<span class="star">4.0</span>
+						<p class="add"><span class="num">76876</span>人已添加</p>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var oUl = document.getElementById('list');
+		var aLi = oUl.getElementsByTagName('li');
+
+		for (var i=0; i<aLi.length; i++) {
+			aLi[i].onmouseover = function() {
+				this.getElementsByTagName('div')[0].style.display = 'block';
+				this.style.zIndex = 2;
+			};
+			aLi[i].onmouseout = function() {
+				this.getElementsByTagName('div')[0].style.display = 'none';
+				this.style.zIndex = 0;
+			};
+		}
+
+	</script>
+</body>
+</html>

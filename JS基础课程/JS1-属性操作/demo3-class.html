@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.red {
+			width: 300px;
+			border: 3px solid red;
+			color: #000;
+			background: #abf;
+			padding: 5px;
+
+		}
+		.yellow {
+			width: 500px;
+			border: 3px solid yellow;
+			color: #000;
+			background: #cdf;
+			padding: 15px;
+
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload = function() {
+		var oP = document.getElementById('p1');
+		var oBtn1 = document.getElementById('btn1');
+		var oBtn2 = document.getElementById('btn2');
+		var oBtn3 = document.getElementById('btn3');
+		var oBtn4 = document.getElementById('btn4');
+		var num = 16;
+
+		oBtn1.onclick = function() {
+			num++;
+			oP.style.fontSize = num + 'px';
+		};
+		oBtn2.onclick = function() {
+			num--;
+			oP.style.fontSize = num + 'px';
+		};
+		oBtn3.onclick = function() {
+			oP.className = 'red';
+		};
+		oBtn4.onclick = function() {
+			oP.className = 'yellow';
+		};
+	};
+	</script>
+</head>
+<body>
+	<input type="button" value="+" id="btn1">
+	<input type="button" value="-" id="btn2">
+	<input type="button" value="红" id="btn3">
+	<input type="button" value="黄" id="btn4">
+	<p id="p1">
+		从近5年国考招录情况来看，2016国考招录人数达到顶峰，接近3万。从近5年国考报名结束之日最后的过审人数来看，四年来在持续走低。从竞争比看，今年的竞争比略低，46:1也创下了五年来的新低。从单日增长来看，昨天较23日增加了27万余人，但低于去年最后一天增长33万人的规模。
+	</p>
+</body>
+</html>

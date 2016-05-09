@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			list-style: none;
+			width: 100px;
+			height: 100px;
+			float: left;
+			margin-right: 10px;
+			background: #fed;
+			line-height: 100px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>点我切换颜色</li>
+		<li>点我切换颜色</li>
+		<li>点我切换颜色</li>
+	</ul>
+	<script type="text/javascript">
+		var aLi = document.getElementsByTagName('li');
+		for (var i=0; i<aLi.length; i++) {
+			aLi[i].onOff = true;
+			aLi[i].onclick = function() {
+				if (this.onOff) {
+					this.style.background = '#cff';
+					this.onOff = false;
+				} else {
+					this.style.background = '#fed';
+					this.onOff = true;
+				}
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="btn" type="button" value="button"></input>
+	<script type="text/javascript">
+
+
+		// alert(this); //window
+
+
+		function fn1() {
+			alert(this);
+		}
+
+		function fn2() {
+			fn1();
+		}
+
+
+		// fn1(); //window
+
+
+		var oBtn = document.getElementById('btn');
+		// oBtn.onclick = fn1; //oBtn
+
+
+		//onclick绑定匿名函数
+		/*oBtn.onclick = function() {
+			fn1();//window
+		};*/
+
+
+		//onclick绑定具名函数
+		oBtn.onclick = fn2; //window
+	</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		input {
+			margin: 20px;
+		}
+		ul {
+			position: relative;
+			margin-top: 20px;
+		}
+		li {
+			list-style: none;
+			width: 50px;
+			height: 50px;
+			text-align: center;
+			line-height: 50px;
+			position: absolute;
+			border: 1px solid #000;
+			font-weight: bold;
+			font-size: 20px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+			var oBtn = document.getElementsByTagName('input')[0];
+			var aColors = ['red', 'green', 'blue', 'yellow'];
+			var oUl = document.getElementsByTagName('ul')[0];
+			var aLi = document.getElementsByTagName("li");
+			var onOff = true;
+
+			oBtn.onclick = function() {
+				if (onOff) {
+					for (var i=0; i<10; i++) {
+						oUl.innerHTML += '<li>' + i + '</li>';
+					}
+					for (var i=0; i<aLi.length; i++) {
+						aLi[i].style.left = 10 + i * 60 + 'px';
+						aLi[i].style.background = aColors[i%aColors.length];
+					}
+					onOff = false;
+				}
+			}
+		};
+	</script>
+</head>
+<body>
+	<input type="button" value="自动生成10个li">
+	<ul></ul>
+</body>
+</html>
