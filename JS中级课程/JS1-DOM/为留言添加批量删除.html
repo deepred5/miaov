@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.selected {
+			background: #fed;
+		}
+	</style>
+</head>
+<body>
+	<input type="text">
+	<input type="button" value="提交">
+	<input type="button" value="批量删除">
+	<ul></ul>
+	<script type="text/javascript">
+		var text = document.getElementsByTagName('input')[0];
+		var add = document.getElementsByTagName('input')[1];
+		var del = document.getElementsByTagName('input')[2];
+		var list = document.getElementsByTagName('ul')[0];
+		var selected = [];
+
+		add.onclick = function() {
+			var message = text.value.trim();
+
+			if (message) {
+				var li = document.createElement('li');
+				li.innerHTML = message;
+				if (list.children[0]) {
+					list.insertBefore(li, list.children[0]);
+				} else{
+					list.appendChild(li);
+				}
+			} else {
+				alert('请输入数据');
+			}
+		};
+
+		list.onclick = function(e) {
+			e = e || window.event;
+			var target = e.target || e.srcElement;
+			if (target && target.nodeName.toLowerCase() === 'li') {
+				if (target.className) {
+					target.className = '';
+				} else {
+					target.className = 'selected';
+				}
+			} 
+		};
+
+		del.onclick = function() {
+
+			selected = [];
+
+			for (var i = 0; i < list.children.length; i++) {
+				if (list.children[i].className) {
+					selected.push(list.children[i]);
+				}
+			}
+
+			selected.forEach(function(item, index) {
+				list.removeChild(item);
+			});
+		};
+	</script>
+</body>
+</html>
