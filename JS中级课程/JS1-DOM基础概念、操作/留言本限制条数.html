@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text">
+	<input type="button" value="提交">
+	<ul></ul>
+	<script type="text/javascript">
+		var text = document.getElementsByTagName('input')[0];
+		var btn = document.getElementsByTagName('input')[1];
+		var list = document.getElementsByTagName('ul')[0];
+
+		btn.onclick = function() {
+			var message = text.value.trim();
+
+			if (message) {
+				var li = document.createElement('li');
+				li.innerHTML = message;
+				if (list.children[0]) {
+					list.insertBefore(li, list.children[0]);
+				} else{
+					list.appendChild(li);
+				}
+				if (list.children.length > 5) {
+					list.removeChild(list.lastChild);
+				}
+			} else {
+				alert('请输入数据');
+			}
+		};
+	</script>
+</body>
+</html>
