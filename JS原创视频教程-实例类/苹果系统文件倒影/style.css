@@ -1,0 +1,24 @@
+html, body {
+			height: 100%;
+}
+body {
+	margin: 0;
+	background: #000;
+}
+#box {
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+	perspective: 800px;
+}
+#img-list {
+	position: absolute;
+	transform-style: preserve-3d;
+}
+#img-list img {
+	width: 300px;
+	position: absolute;
+	bottom: 0;
+	-webkit-box-reflect: below 0 -webkit-linear-gradient(top, rgba(0, 0, 0, .1), rgba(0, 0, 0, .5));
+	transition: .5s;
+}
