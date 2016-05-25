@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo</title>
+	<style type="text/css">
+		a {
+			margin: 10px;
+		}
+	</style>
+</head>
+<script type="text/javascript">
+	window.onload = function() {
+		page({
+			id: 'container',
+			nowNum: 7, // 当前第n页
+			allNum: 10, // 共有n页
+			callback: function(nowNum, allNum) {
+				console.log('当前页: ', nowNum, '\n总共页: ', allNum);
+			}
+		});
+	};
+
+	function page(opt) {
+		if (!opt.id) {
+			return false;
+		}
+		var obj = document.getElementById(opt.id);
+		var nowNum = opt.nowNum || 1;
+		var allNum = opt.allNum || 5;
+		var callback = opt.callback || function() {};
+
+		function add(href, text) {
+			var link = document.createElement('a');
+			link.href = href;
+			link.innerHTML = text;
+			obj.appendChild(link);
+		}
+
+		// 显示首页
+		if (nowNum >= 4 && allNum >= 6) {
+			add('#1', '首页');
+		}
+
+		// 显示上一页
+		if (nowNum >= 2) {
+			add('#' + (nowNum - 1), '上一页');
+		}
+
+		// 显示中间5页
+		if (allNum <= 5) { // 总数小于5页,正常显示
+			for (var i = 1; i <= allNum; i++) {
+				var link = document.createElement('a');
+				link.href = '#' + i;
+				if (i === nowNum) { // 当前页没有花括号标记
+					link.innerHTML = i;
+				} else {
+					link.innerHTML = '['+ i + ']';
+				}
+				obj.appendChild(link);
+			}
+		} else { // 总数大于5页
+			for (var i = 1; i <= 5; i++) {
+				var link = document.createElement('a');
+				if (nowNum <= 2) { // 总数大于5页但是当前页小于等于2，则仍然正常显示
+					link.href = '#' + i;
+					if (i === nowNum) {
+						link.innerHTML = i;
+					} else {
+						link.innerHTML = '[' + i + ']';
+					}
+				} else if(allNum - nowNum < 2) { // 最后两页显示相同
+					link.href = '#' + (allNum - 5 + i);
+					if ((allNum - nowNum) === 0 && i === 5) { // 当前页为最后一页
+						link.innerHTML = allNum - 5 + i;
+					} else if((allNum - nowNum) === 1 && i === 4) { // 当前页为最后第二页
+						link.innerHTML = allNum - 5 + i;
+					} else {
+						link.innerHTML = '[' + (allNum - 5 + i) + ']'
+					}
+				} else { // 显示中间5页
+					link.href = '#' + (nowNum - 3 + i);
+					if (i === 3) {
+						link.innerHTML = nowNum - 3 + i;
+					} else {
+						link.innerHTML = '['+ (nowNum - 3 + i) + ']';
+					}
+				}
+				obj.appendChild(link);
+			}
+		}
+
+		// 显示下一页
+		if ((allNum - nowNum) >= 1) {
+			add('#' + (nowNum + 1), '下一页');
+		}
+
+		// 显示尾页
+		if ((allNum - nowNum) >= 3 && allNum >= 6) {
+			add('#' + allNum, '尾页');
+		}
+
+		// 运行回调函数
+		callback(nowNum, allNum);
+
+		var links = obj.getElementsByTagName('a');
+
+		for (var i = 0; i < links.length; i++) {
+			links[i].onclick = function() {
+				var curNum = parseInt(this.getAttribute('href').substring(1));
+				if (curNum !== nowNum) {
+					obj.innerHTML = '';
+					page({
+						id: opt.id,
+						nowNum: curNum, // 更新当前页
+						allNum: allNum,
+						callback: callback
+					});
+				}
+
+				return false; // 阻止url跳转
+			};
+		}
+
+	}
+</script>
+<body>
+	<div id="container">
+		<!-- <a href="#1">首页</a>
+		<a href="#3">上一页</a>
+		<a href="#2">[2]</a>
+		<a href="#3">[3]</a>
+		<a href="#4">4</a>
+		<a href="#5">[5]</a>
+		<a href="#6">[6]</a>
+		<a href="#5">下一页</a>
+		<a href="#10">尾页</a> -->
+	</div>
+</body>
+</html>
