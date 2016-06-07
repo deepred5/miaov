@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body {
+			margin: 0;
+			height: 3000px;
+		}
+		#back {
+			position: fixed;
+			bottom: 5px;
+			right: 5px;
+			background: #ced;
+			width: 100px;
+			height: 50px;
+			text-align: center;
+			line-height: 50px;
+			display: none;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="back">返回顶部</div>
+	<script type="text/javascript">
+		var back = document.getElementById('back');
+		window.onscroll = function() {
+			if (document.body.scrollTop > document.documentElement.clientHeight) {
+				back.style.display = 'block';
+			} else {
+				back.style.display = 'none';
+			}
+		};
+
+		function backToTop() {
+			var scrollTop = document.body.scrollTop;
+			scrollTop -= 50;
+			if (scrollTop < 0) {
+				scrollTop = 0;
+				clearInterval(back.timer);
+			}
+			document.body.scrollTop = scrollTop;
+		}
+
+		function backToTop2() {
+			var scrollTop = document.body.scrollTop;
+			scrollTop -= 50;
+			if (scrollTop >= 0) {
+				document.body.scrollTop = scrollTop;
+				setTimeout(backToTop2, 20);
+			} else {
+				scrollTop = 0;
+				document.body.scrollTop = scrollTop;
+			}
+		}
+
+		/*back.onclick = function() {
+			back.timer = setInterval(backToTop, 20);
+		};*/
+
+		back.onclick = backToTop2;
+	</script>
+</body>
+</html>

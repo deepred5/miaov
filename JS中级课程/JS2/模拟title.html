@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body, p {
+			margin: 0; 
+			padding: 0;
+		}
+		p {
+			width: 600px;
+			position: fixed;
+			bottom: 10px;
+		}
+		span[title] {
+			color: #bbd;
+			position: relative;
+		}
+		span.info {
+			background: #FFFFCA;;
+			padding: 5px;
+			top: 18px;
+			left: 0;
+			position: absolute;
+			white-space: nowrap;
+			z-index: 1;
+			border: 1px solid #000;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<p>
+		<span title="JavaScript是一门很热门的语言">JavaScript</span>是面向Web的编程语言，绝大多数现代网站都使用了<span title="JavaScript">JavaScript</span>，并且所有的现代<span title="Web">Web</span>浏览器——基于<span>桌面系统</span>、游戏机、平板电脑和智能手机的浏览器——均包含了<span title="JavaScript">JavaScript</span>解释器。这使得<span title="JavaScript">JavaScript</span>能够称得上史上最广泛的编程语言。<span title="JavaScript">JavaScript</span>也是前端开发工程师必须掌握的三种技能之一，描述网页内容的<span title="HTML">HTML</span>、描述网页样式的<span title="CSS">CSS</span>以及描述网页行为的<span title="JavaScript1">JavaScript1</span>。
+	</p>
+	<script type="text/javascript">
+		var p = document.getElementsByTagName('p')[0];
+		var span = p.getElementsByTagName('span');
+		var title = '';
+
+		function getPos(obj) {
+			var pos = {left: 0, top: 0};
+			while(obj) {
+				pos.left += obj.offsetLeft;
+				pos.top += obj.offsetTop;
+				obj = obj.offsetParent;
+			}
+			return pos;
+		}
+
+		// 将p居中显示
+		function displayCenter() {
+			p.style.left = (document.documentElement.clientWidth - p.offsetWidth) / 2 + 'px';
+		}
+		displayCenter();
+		window.onresize = displayCenter;
+
+		for (var i = 0; i < span.length; i++) {
+			if (span[i].getAttribute('title')) {
+				var node = document.createElement('span');
+				node.setAttribute('class', 'info');
+				node.innerHTML = span[i].getAttribute('title');
+				span[i].appendChild(node);
+
+				span[i].onmouseover = function() {
+					title = this.title;
+					this.title = ''; // 阻止原生title提示
+					this.children[0].style.display = 'block';
+					// 提示太贴近底部则显示在上面
+					if (this.children[0].offsetHeight + getPos(this.children[0]).top > document.documentElement.clientHeight - 5) {
+						this.children[0].style.top = -(this.children[0].offsetHeight + 5) + 'px';
+					}
+				}
+				span[i].onmouseout = function() {
+					this.title = title; // 还原title
+					this.children[0].style.display = 'none';
+				}
+			}
+		}
+	</script>
+</body>
+</html>
