@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#box {
+			width: 100px;
+			height: 100px;
+			background: #fed;
+		}
+	</style>
+	<script type="text/javascript" src="vquery.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('#box').css('background', '#fed').html('tc');
+
+			$.fn.extend({
+				tc: function() {
+					console.log('tc');
+					console.log(this);
+					return this;
+				}
+			})
+		});
+	</script>
+</head>
+<body>
+	<div id="box" class="box">div</div>
+	<p>123</p>
+	<p>123</p>
+	<p>123</p>
+	<p>123</p>
+	<ul>
+		<li class="box">1</li>
+		<li>2</li>
+		<li>3</li>
+	</ul>
+	<ol>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+	</ol>
+	<ul>
+		<li class="box">1</li>
+		<li>2</li>
+		<li class="box">3</li>
+	</ul>
+	<script type="text/javascript">
+		function Dog(name) {
+			this.color = 'red';
+			this.name = name;
+		}
+		Dog.prototype.bark = function() {
+			console.log(this.name);
+		}
+
+		var dog = new Dog('tc');
+		dog.bark();
+	</script>
+</body>
+</html>
